@@ -29,27 +29,10 @@ contract Adoption{
         owner.transfer(msg.value);
         emit Transfer(msg.sender, msg.value);
     }
-    // address public owner;
-    // string public name="Sathishkumar";
 
-    // constructor() public{
-    //     owner=msg.sender;
-    // }
-
-    // modifier onlyOwner() {
-    //     require(msg.sender==owner);
-    //     _;
-    // }
-
-    // function transferOwner(address newOwner,string memory _name) public onlyOwner returns (address){
-    //     name=_name;
-    //     owner=newOwner;
-    //     return owner;
-    // }
-
-    function adopt(uint petId) public returns (uint){
+    function adopt(uint petId) public payable returns (uint){
         require(petId>=0 && petId<=15);
-        // transferEther();
+        transferEther();
         adopters[petId]=msg.sender;
         return petId;
     }
